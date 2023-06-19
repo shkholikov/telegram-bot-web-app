@@ -1,4 +1,4 @@
-import { Bot, InlineKeyboard } from "./deno.deps.ts";
+import {Bot, GrammyError, HttpError, InlineKeyboard} from "./deno.deps.ts";
 import "https://deno.land/x/dotenv@v3.2.2/load.ts";
 
 export const bot = new Bot(Deno.env.get("BOT_TOKEN") || "");
@@ -28,6 +28,19 @@ bot.on(
       }
     )
 );
+
+bot.catch((err) => {
+    const ctx = err.ctx;
+    console.error(`Error while handling update ${ctx.update.update_id}:`);
+    const e = err.error;
+    if (e instanceof GrammyError) {
+        console.error("Error in request:", e.description);
+    } else if (e instanceof HttpError) {
+        console.error("Could not contact Telegram:", e);
+    } else {
+        console.error("Unknown error:", e);
+    }
+});
 
 // Start the bot.
 // comment before using webhook
