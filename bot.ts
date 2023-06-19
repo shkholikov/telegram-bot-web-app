@@ -10,16 +10,25 @@ const inlineButton = new InlineKeyboard().webApp(
 
 bot.command("start", async (ctx) => {
   await ctx.reply(`Hello, ${ctx.from?.first_name} 👋🏻`);
-  await ctx.reply("Visit my URL-KEEPER website to catch me on other channels ⚡️", {
-    reply_markup: inlineButton,
-  });
+  await ctx.reply(
+    "Visit my URL-KEEPER website to catch me on other channels ⚡️",
+    {
+      reply_markup: inlineButton,
+    }
+  );
 });
 
-bot.on("message", async (ctx) =>
-  await ctx.reply("Visit my URL-KEEPER website to catch me on other channels ⚡️", {
-      reply_markup: inlineButton,
-  })
+bot.on(
+  "message",
+  async (ctx) =>
+    await ctx.reply(
+      "Visit my URL-KEEPER website to catch me on other channels ⚡️",
+      {
+        reply_markup: inlineButton,
+      }
+    )
 );
 
 // Start the bot.
-bot.start();
+// comment before using webhook
+// bot.start();
