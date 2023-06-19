@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.192.0/http/server.ts";
-import { webhookCallback } from "./deno.deps.ts";
+import { webhookCallback } from "https://deno.land/x/grammy@v1.16.2/mod.ts";
 import { bot } from "./bot.ts";
 
 const handleUpdate = webhookCallback(bot, "std/http");
