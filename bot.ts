@@ -2,7 +2,7 @@ import { Bot, GrammyError, HttpError, InlineKeyboard } from "./deno.deps.ts";
 import "https://deno.land/x/dotenv@v3.2.2/load.ts";
 
 export const bot = new Bot(Deno.env.get("BOT_TOKEN") || "");
-console.log("heelloo");
+console.log("Bot is running...");
 
 const inlineButton = new InlineKeyboard().webApp(
   "URL-KEEPER 🔗",
